@@ -4,10 +4,25 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="PUBG_APP.MainPage"  AnchorX="0" AnchorY="0" BackgroundColor="#AD1F1F">
+             xmlns:local="clr-namespace:PUBG_APP"
+             x:Class="PUBG_APP.MainPage"  AnchorX="0" AnchorY="0" BackgroundColor="#B9CD07">
 
-    <StackLayout>
+    
+<StackLayout>
 
+
+
+        <Entry x:Name="Player_Id"
+               Placeholder="Введите имя игрока (Чуствительно к регистру)"
+               Completed="Player_Id_Completed"
+               FontSize="Medium" 
+               HorizontalOptions="Center"
+               Margin="10,20,10,0"
+               
+               />
+
+        <Label x:Name="Label_Player_Id"
+               />
     </StackLayout>
     
 

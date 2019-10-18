@@ -14,11 +14,17 @@ namespace PUBG_APP
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        string Player_Id_Case;
+        
         public MainPage()
         {
             InitializeComponent();
         }
 
-        
+        private void Player_Id_Completed(object sender, EventArgs e)
+        {
+            Player_Id_Case = Player_Id.Text;
+            
+        }
     }
 }

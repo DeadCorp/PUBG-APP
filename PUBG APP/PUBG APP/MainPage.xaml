@@ -15,7 +15,9 @@
         <Entry x:Name="Player_Id"
                Placeholder="Введите имя игрока (Чуствительно к регистру)"
                Completed="Player_Id_Completed"
-               FontSize="Medium" 
+               FontSize="Caption" 
+               TextColor="RosyBrown"
+               Unfocused="Player_Id_Completed"
                HorizontalOptions="Center"
                Margin="10,20,10,0"
                
@@ -23,7 +25,8 @@
 
 <Button x:Name="Button1"
     Text="Search"
-        Clicked="Button1_Clicked" />
+        Clicked="Button1_Clicked" 
+        Margin="10,0,10,0"/>
 
         <Label x:Name="Label_Player_Id"
                />

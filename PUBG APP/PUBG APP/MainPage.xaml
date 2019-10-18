@@ -21,6 +21,10 @@
                
                />
 
+<Button x:Name="Button1"
+    Text="Search"
+        Clicked="Button1_Clicked" />
+
         <Label x:Name="Label_Player_Id"
                />
     </StackLayout>

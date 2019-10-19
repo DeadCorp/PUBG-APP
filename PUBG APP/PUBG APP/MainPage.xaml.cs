@@ -12,91 +12,70 @@ using Xamarin.Forms;
 
 namespace PUBG_APP
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : MasterDetailPage
     {
-        string Player_Id_Case;
-        string id_acc;
-        int i = 0;
+        static string[] reg =  
+        {
+        "psn",              // — PS4
+        "steam",            // — Steam
+        "tournament",       // — Tournaments
+        "xbox"              // — Xbox
+        };
+        static string[] plat =
+        {
+            "pc-as",        // — Asia
+            "pc-eu",        // — Europe
+            "pc-jp",        // — Japan
+            "pc-kakao",     // — Kakao
+            "pc-krjp",      // — Korea
+            "pc-na",        // — North America
+            "pc-oc",        // — Oceania
+            "pc-ru",        // — Russia
+            "pc-sa",        // — South and Central America
+            "pc-sea",       // — South East Asia
+            "pc-tournament",// — Tournaments
+            "psn-as",       // — Asia
+            "psn-eu",       // — Europe
+            "psn-na",       // — North America
+            "psn-oc",       // — Oceania
+            "xbox-as",      // — Asia
+            "xbox-eu",      // — Europe
+            "xbox-na",      // — North America
+            "xbox-oc",      // — Oceania
+            "xbox-sa",      // — South America
+        };
+       
         public   MainPage()
         {
             InitializeComponent();
-
-        }
-
-        private void Player_Id_Completed(object sender, EventArgs e)
-        {
-            Player_Id_Case = Player_Id.Text;
+            Detail = new NavigationPage(new Search());
+            IsPresented = false;
             
         }
+        
+        
 
-        private void Button1_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked_season(object sender, EventArgs e)
         {
-            MainAsync();
-           
-            
-            
+            Detail = new NavigationPage(new SeasonStat());
+            IsPresented = false;
+              
         }
-        async Task MainAsync()
+
+        private async void Button_Clicked_lifetime(object sender, EventArgs e)
         {
-            PubgNetClient client = new PubgNetClient("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0ZjYyODUxMC1kM2UwLTAxMzctZDdhNC0wZjNhMTg5NGE0ZTciLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTcxNDA4NDA3LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImNpcGlkcmlzLWdtYWlsIn0.vTbdRV5CgGMOUUU7zDmMojlSULLafjhfFbBfEkbidjI");
-            var players = await client.GetPlayersByUsernames(new string[] { Player_Id_Case });
-            foreach (var s in players.Data)
-            {
-                id_acc = s.Id;
-
-                setc(id_acc);
-            }
+            IsPresented = false;
         }
-        private void setc(string q) => Label_Player_Id.Text = q;
 
-        private void Player_Id_Completed(object sender, FocusEventArgs e)
+        private void Button_Clicked_search(object sender, EventArgs e)
         {
-            Player_Id_Case = Player_Id.Text;
+            Detail = new NavigationPage(new Search());
+            IsPresented = false;
         }
-        /*  MainAsync().Wait();
- async Task MainAsync()
- {
-     string maxkill = null;
-     /*string id_name = null;
-     string id_match = null;
-     PubgNetClient client = new PubgNetClient("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0ZjYyODUxMC1kM2UwLTAxMzctZDdhNC0wZjNhMTg5NGE0ZTciLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTcxNDA4NDA3LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImNpcGlkcmlzLWdtYWlsIn0.vTbdRV5CgGMOUUU7zDmMojlSULLafjhfFbBfEkbidjI");
-     var players = await client.GetPlayersByUsernames(new string[]{"DeadCorporation"});
-
-
-     var season2 = await client.GetSeasons();
-      foreach(var s in players.Data)
-       {
-           id_name = s.Id;
-       }
-     foreach (var i in season2.Data)
-     {
-
-         if (i.Attributes.IsCurrentSeason)
-         {
-              id_match = i.Id;
-         }
-         var season = await client.GetSeasonStatsForPlayer(id_name,id_match);
-     }
-
-     *//*
-     string id_name = null;
-     PubgNetClient client = new PubgNetClient("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0ZjYyODUxMC1kM2UwLTAxMzctZDdhNC0wZjNhMTg5NGE0ZTciLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTcxNDA4NDA3LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImNpcGlkcmlzLWdtYWlsIn0.vTbdRV5CgGMOUUU7zDmMojlSULLafjhfFbBfEkbidjI");
-     var players = await client.GetPlayersByUsernames(new string[] { "DeadCorporation" });
-     foreach (var s in players.Data)
-     {
-         id_name = s.Id;
-         maxkill = id_name;
-         break;
-     }
-     Console.WriteLine(maxkill);
-     System.Console.ReadKey();
-
- }
-*/
-
-
+        public static string getApi()
+        {
+            return "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0ZjYyODUxMC1kM2UwLTAxMzctZDdhNC0wZjNhMTg5NGE0ZTciLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTcxNDA4NDA3LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImNpcGlkcmlzLWdtYWlsIn0.vTbdRV5CgGMOUUU7zDmMojlSULLafjhfFbBfEkbidjI";
+        }
     }
 }

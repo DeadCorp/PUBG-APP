@@ -1,38 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:local="clr-namespace:PUBG_APP"
-             x:Class="PUBG_APP.MainPage"  AnchorX="0" AnchorY="0" BackgroundColor="#B9CD07">
+             x:Class="PUBG_APP.MainPage">
 
+    <MasterDetailPage.Master>
+        <ContentPage Title="q" BackgroundColor="#00080">
+            <ContentPage.Content>
+                <StackLayout Padding="5,20,5,5">
+                    <Button Text="Поиск" Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_search"/>
+                    <Button Text="Сезонная статистика"    Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_season"  />
+                    <Button Text="Статистика за всю игру" Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_lifetime"/>
+                    
+                </StackLayout> 
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
     
-<StackLayout>
+    <MasterDetailPage.Detail>
+        <ContentPage>
+            <ContentPage.Content>
+                
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="start page"/>
+                
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>
 
-
-
-        <Entry x:Name="Player_Id"
-               Placeholder="Введите имя игрока (Чуствительно к регистру)"
-               Completed="Player_Id_Completed"
-               FontSize="Caption" 
-               TextColor="RosyBrown"
-               Unfocused="Player_Id_Completed"
-               HorizontalOptions="Center"
-               Margin="10,20,10,0"
-               
-               />
-
-<Button x:Name="Button1"
-    Text="Search"
-        Clicked="Button1_Clicked" 
-        Margin="10,0,10,0"/>
-
-        <Label x:Name="Label_Player_Id"
-               />
-    </StackLayout>
-    
-
-    
-    
-</ContentPage>
+</MasterDetailPage>

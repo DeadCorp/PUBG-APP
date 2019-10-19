@@ -148,9 +148,9 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PUBG APP\PUBG APP.csproj">
+    <ProjectReference Include="..\PUBG APP\PUBG_APP.csproj">
       <Project>{c44e0915-add4-4c90-9cad-b06ad1084e97}</Project>
-      <Name>PUBG APP</Name>
+      <Name>PUBG_APP</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUBG_APP.Search"
+             xmlns:local="clr-namespace:PUBG_APP"
+             Title="Поиск">
+    <ContentPage.Content>
+        <StackLayout Padding="10" HorizontalOptions="FillAndExpand" BackgroundColor="#B9CD07">
+            <Entry x:Name="Player_Id" Placeholder="Введите имя игрока (Чуствительно к регистру)"  Completed="Player_Id_Completed"
+                         FontSize="Caption" Unfocused="Player_Id_Completed" HorizontalOptions="Fill" Margin="5,5,5,0"/>
+            <Button x:Name="Button1" Text="Поиск" Clicked="Button1_Clicked" Margin="2" HorizontalOptions="CenterAndExpand"/>
+            <Label x:Name="Label_Player_Id"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

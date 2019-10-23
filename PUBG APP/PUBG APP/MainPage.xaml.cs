@@ -15,65 +15,59 @@ namespace PUBG_APP
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        static string[] reg =  
-        {
-        "psn",              // — PS4
-        "steam",            // — Steam
-        "tournament",       // — Tournaments
-        "xbox"              // — Xbox
-        };
-        static string[] plat =
-        {
-            "pc-as",        // — Asia
-            "pc-eu",        // — Europe
-            "pc-jp",        // — Japan
-            "pc-kakao",     // — Kakao
-            "pc-krjp",      // — Korea
-            "pc-na",        // — North America
-            "pc-oc",        // — Oceania
-            "pc-ru",        // — Russia
-            "pc-sa",        // — South and Central America
-            "pc-sea",       // — South East Asia
-            "pc-tournament",// — Tournaments
-            "psn-as",       // — Asia
-            "psn-eu",       // — Europe
-            "psn-na",       // — North America
-            "psn-oc",       // — Oceania
-            "xbox-as",      // — Asia
-            "xbox-eu",      // — Europe
-            "xbox-na",      // — North America
-            "xbox-oc",      // — Oceania
-            "xbox-sa",      // — South America
-        };
-       
+
+        string q;
         public   MainPage()
         {
             InitializeComponent();
-            Detail = new NavigationPage(new Search());
-            IsPresented = false;
-            
-        }
-        
-        
 
-        private async void Button_Clicked_season(object sender, EventArgs e)
+
+
+            Detail = new NavigationPage(new Search())
+            {
+                BarBackgroundColor = Color.FromHex("#1262c9")
+            };
+
+            IsPresented = false;
+        }
+        public MainPage(string s)
         {
-            Detail = new NavigationPage(new SeasonStat());
+            this.BindingContext = new NameViewModel
+            {
+                PlayerName = s
+                
+            };
+            q = s;
+        }
+        
+        
+
+        private  void Button_Clicked_season(object sender, EventArgs e)
+        {
+            Detail = new NavigationPage(new SeasonStat(q))
+            {
+                BarBackgroundColor = Color.FromHex("#1262c9")
+            };
+
             IsPresented = false;
-              
+
+
         }
 
-        private async void Button_Clicked_lifetime(object sender, EventArgs e)
+        private  void Button_Clicked_lifetime(object sender, EventArgs e)
         {
             IsPresented = false;
         }
 
         private void Button_Clicked_search(object sender, EventArgs e)
         {
-            Detail = new NavigationPage(new Search());
+            Detail = new NavigationPage(new Search())
+            {
+                BarBackgroundColor = Color.FromHex("#1262c9")
+            };
             IsPresented = false;
         }
-        public static string getApi()
+        public static string GetApi()
         {
             return "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0ZjYyODUxMC1kM2UwLTAxMzctZDdhNC0wZjNhMTg5NGE0ZTciLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTcxNDA4NDA3LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImNpcGlkcmlzLWdtYWlsIn0.vTbdRV5CgGMOUUU7zDmMojlSULLafjhfFbBfEkbidjI";
         }

@@ -5,16 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Class="PUBG_APP.MainPage">
 
+    
     <MasterDetailPage.Master>
-        <ContentPage Title="q" BackgroundColor="#00080">
+        
+        <ContentPage Title="q" BackgroundColor="#1262c9" Padding="15,30,15,15"
+                     >
             <ContentPage.Content>
                 <StackLayout Padding="5,20,5,5">
+                    
                     <Button Text="Поиск" Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_search"/>
                     <Button Text="Сезонная статистика"    Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_season"  />
                     <Button Text="Статистика за всю игру" Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_lifetime"/>
                     
                 </StackLayout> 
             </ContentPage.Content>
+            
         </ContentPage>
     </MasterDetailPage.Master>
     

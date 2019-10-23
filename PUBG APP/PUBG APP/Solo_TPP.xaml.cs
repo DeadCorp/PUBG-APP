@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,18 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace PUBG_APP
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SeasonStat : TabbedPage
+    public partial class Solo_TPP : ContentPage
     {
-        
-        public SeasonStat(string s)
+        public Solo_TPP()
         {
-            
             InitializeComponent();
-            this.BindingContext = new NameViewModel
-            {
-                PlayerName = s
-            };
-
         }
     }
 }

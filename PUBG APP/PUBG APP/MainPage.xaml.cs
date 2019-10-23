@@ -15,43 +15,35 @@ namespace PUBG_APP
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
+        static string Name;
+        PubgNetClient client = new PubgNetClient(GetApi());
+        SeasonStat season = new SeasonStat()
+        {
+            BarBackgroundColor = Color.FromHex("#1262c9")
+        };
+        public Page Page => season;
 
-        string q;
+        public static string GetName() { return Name; }
         public   MainPage()
         {
             InitializeComponent();
+            this.Detail = new NavigationPage(Page);         
 
-
-
-            Detail = new NavigationPage(new Search())
-            {
-                BarBackgroundColor = Color.FromHex("#1262c9")
-            };
-
-            IsPresented = false;
+            IsPresented = true;
         }
-        public MainPage(string s)
-        {
-            this.BindingContext = new NameViewModel
-            {
-                PlayerName = s
-                
-            };
-            q = s;
-        }
+
         
-        
+
 
         private  void Button_Clicked_season(object sender, EventArgs e)
         {
-            Detail = new NavigationPage(new SeasonStat(q))
-            {
-                BarBackgroundColor = Color.FromHex("#1262c9")
-            };
+            
+            
+            this.Detail = new NavigationPage(Page);
 
             IsPresented = false;
 
-
+            
         }
 
         private  void Button_Clicked_lifetime(object sender, EventArgs e)
@@ -59,17 +51,53 @@ namespace PUBG_APP
             IsPresented = false;
         }
 
-        private void Button_Clicked_search(object sender, EventArgs e)
-        {
-            Detail = new NavigationPage(new Search())
-            {
-                BarBackgroundColor = Color.FromHex("#1262c9")
-            };
-            IsPresented = false;
-        }
+        
+       
         public static string GetApi()
         {
             return "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0ZjYyODUxMC1kM2UwLTAxMzctZDdhNC0wZjNhMTg5NGE0ZTciLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTcxNDA4NDA3LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImNpcGlkcmlzLWdtYWlsIn0.vTbdRV5CgGMOUUU7zDmMojlSULLafjhfFbBfEkbidjI";
+        }
+
+        
+
+        private void Button_Clicked_Name(object sender, EventArgs e)
+        {
+            Name = PlayerNameEntry.Text;
+            IsPresented = false;
+            TakeGameData();
+
+
+        }
+        private async Task TakeGameData()
+        {
+            string IdTemp = null;
+            string SeasonIdTemp = null;
+           
+            if (Name == null)
+                await DisplayAlert("Уведомление", "Введите ник игрока", "ОK");
+            else
+            {
+                
+                var players = await client.GetPlayersByUsernames(new string[] { Name });
+                if (players == null)
+                    await DisplayAlert("Уведомление", "Неверный  ник игрока", "ОK");
+                var seasons = await client.GetSeasons();
+                foreach (var item in seasons.Data)
+                {
+                    SeasonIdTemp += item.Id + ",";
+                }
+                foreach (var item in players.Data)
+                {
+                    
+                    IdTemp = item.Id;
+                }
+                this.BindingContext = new NameViewModel
+                {
+                    PlayerRating = IdTemp,
+                    SeasonId = SeasonIdTemp
+                    
+                };
+            }
         }
     }
 }

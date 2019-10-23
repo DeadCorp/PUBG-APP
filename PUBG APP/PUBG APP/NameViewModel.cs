@@ -8,26 +8,38 @@ namespace PUBG_APP
    public class NameViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private NameModel nameModel;
-         
+        private NameModel RatingModel;
+        private NameModel SeasonIdModel;
+        
         public NameViewModel()
         {
-            nameModel = new NameModel();
+            RatingModel = new NameModel();
+            SeasonIdModel = new NameModel();
         }
 
-        public string PlayerName
+        public string PlayerRating
         {
-            get { return nameModel.PlayerName; }
+            get { return RatingModel.PlayerRating; }
             set
             {
-                if(nameModel.PlayerName!=value)
+                if(RatingModel.PlayerRating != value)
                 {
-                    nameModel.PlayerName = value;
+                    RatingModel.PlayerRating = value;
                     //OnPropertyChanged("PlayerName");
 
                 }
             }
         }
+        public string SeasonId {
+            get { return SeasonIdModel.SeasonId; }
+            set
+            {
+                if(SeasonIdModel.SeasonId != value)
+                {
+                    SeasonIdModel.SeasonId = value;
+                }
+            }
+        }                  
 
         protected void OnPropertyChanged(string propName)
         {

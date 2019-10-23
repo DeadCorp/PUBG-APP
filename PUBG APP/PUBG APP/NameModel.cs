@@ -6,7 +6,8 @@ namespace PUBG_APP
 {
     public class NameModel
     {
-        public string PlayerName { get; set; }
+        public string PlayerRating { get; set; }
+        public string SeasonId { get; set; }
     }
     
 }

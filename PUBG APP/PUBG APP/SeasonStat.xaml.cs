@@ -14,14 +14,11 @@ namespace PUBG_APP
     public partial class SeasonStat : TabbedPage
     {
         
-        public SeasonStat(string s)
+        public SeasonStat()
         {
             
             InitializeComponent();
-            this.BindingContext = new NameViewModel
-            {
-                PlayerName = s
-            };
+            
 
         }
     }

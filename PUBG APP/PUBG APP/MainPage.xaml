@@ -3,34 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             x:Class="PUBG_APP.MainPage">
-
+             xmlns:local="clr-namespace:PUBG_APP;assembly=PUBG_APP"
+             x:Class="PUBG_APP.MainPage"
+             Title="Main">
     
     <MasterDetailPage.Master>
         
-        <ContentPage Title="q" BackgroundColor="#1262c9" Padding="15,30,15,15"
-                     >
-            <ContentPage.Content>
-                <StackLayout Padding="5,20,5,5">
-                    
-                    <Button Text="Поиск" Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_search"/>
-                    <Button Text="Сезонная статистика"    Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_season"  />
-                    <Button Text="Статистика за всю игру" Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_lifetime"/>
-                    
-                </StackLayout> 
-            </ContentPage.Content>
+        <ContentPage Title="a">
             
+            <StackLayout  BackgroundColor="#1262c9" Padding="15,30,15,15" >
+                
+                <Label Text="Введите имя игрока(С учотом регистра)" Margin="5,0,5,0" FontSize="12"/>
+                <Entry x:Name="PlayerNameEntry" Margin="5,0,5,0"/>
+                <Button Text="Поиск" Margin="5,0,5,0" WidthRequest="30" HeightRequest="60" BackgroundColor="#1262c9" Clicked="Button_Clicked_Name"/>
+                <Button Text="Сезонная статистика"    Margin="5,0,5,0" BackgroundColor="#1262c9" Clicked="Button_Clicked_season"  />
+                <Button Text="Статистика за всю игру" Margin="5,0,5,0" BackgroundColor="#1262c9" />
+
+            </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
-    
-    <MasterDetailPage.Detail>
-        <ContentPage>
-            <ContentPage.Content>
-                
-                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="start page"/>
-                
-            </ContentPage.Content>
-        </ContentPage>
-    </MasterDetailPage.Detail>
-
 </MasterDetailPage>

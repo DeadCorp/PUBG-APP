@@ -7,7 +7,9 @@
              xmlns:local="clr-namespace:PUBG_APP;assembly=PUBG_APP"
              x:Class="PUBG_APP.Solo_FPP"
              Title="Solo">
+    
     <RelativeLayout Padding="8">
+        
         <Label Margin="0,5,0,0" x:Name="Switch" Text="TPP" HorizontalOptions="EndAndExpand"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
             Property=Width, 
@@ -23,12 +25,21 @@
             
             }"/>
         <Label x:Name="RatingTag" Text="Рейтинг:"/>
-        <Label x:Name="Rating" Text="{Binding PlayerName}"
+        <Label x:Name="Rating" Text="{Binding PlayerRating}"
                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
             ElementName=RatingTag,
             Property=X,
-            Constant=20,
+            Constant=60,
             Factor=1}"/>
+        
+<Editor x:Name="Editor" Text="{Binding SeasonId}" Margin="10" WidthRequest="300" HeightRequest="100"
+        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+            Property=Height, 
+            Factor=0.5,
+            Constant=0
+            }"
+        
+        />
     </RelativeLayout>
     
 </ContentPage>

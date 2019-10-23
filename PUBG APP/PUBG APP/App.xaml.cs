@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PubgNet;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,6 +7,7 @@ namespace PUBG_APP
 {
     public partial class App : Application
     {
+        
         public App()
         {
             InitializeComponent();
@@ -16,6 +18,9 @@ namespace PUBG_APP
         protected override void OnStart()
         {
             // Handle when your app starts
+            
+            
+            
         }
 
         protected override void OnSleep()
